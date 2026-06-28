@@ -6,6 +6,26 @@ The application allows users to manage EV charging stations with authentication,
 
 ---
 
+## Links
+#Frontend 
+```bash
+https://evoltsoft-assignment-xi.vercel.app
+```
+# Backend API
+```bash
+https://evoltsoftassignment.onrender.com
+```
+3 Swagger API Documentation
+```bash
+https://evoltsoftassignment.onrender.com/api-docs/
+```
+# GitHub Repository
+
+```bash
+https://github.com/Aryanverma24/EvoltsoftAssignment
+```
+
+
 ## 🚀 Features
 
 ### Authentication
@@ -144,7 +164,7 @@ Create a new user account.
 
 ```http
 /api/auth/register
-
+```
 
 **Request Body:**
 
@@ -162,17 +182,18 @@ Create a new user account.
   "token": "jwt_token"
 }
 ```
+
 # Login User
 
 **Method:** `POST`
 
 ```http
 /api/auth/login
-
+```
 Login user and generate JWT authentication token.
 
 Request Body
-
+```json
 {
   "email": "john@example.com",
   "password": "password123"
@@ -212,10 +233,10 @@ Create a new charging station.
 
 ```http
 /api/stations
-
+```
 
 Request Body
-
+```json
 {
   "name": "EV Charging Station",
   "latitude": 28.6139,
@@ -233,10 +254,10 @@ Update existing charging station details.
 
 ```http
 /api/stations/:id
-
+```
 
 Request Body
-
+```json
 {
   "name": "Updated Station",
   "status": "Inactive",
@@ -260,6 +281,33 @@ Delete a charging station using station ID.
 Protected APIs require JWT token:
 
 Authorization: Bearer your_jwt_token
+
+## SnapShots
+
+# 1. Login Page
+<img width="1920" height="1080" alt="Screenshot (199)" src="https://github.com/user-attachments/assets/5aaf24ef-a137-429a-82a9-d063aacaefbf" />
+
+
+# 2.Register Page
+<img width="1920" height="1080" alt="Screenshot (200)" src="https://github.com/user-attachments/assets/cd7c8049-3d6f-4d54-a95e-f6c8b92c017d" />
+
+# 3 Dashboard Pages
+<img width="1920" height="1080" alt="Screenshot (201)" src="https://github.com/user-attachments/assets/ed44845f-138c-4356-8508-eb5ea49700c5" />
+<img width="1920" height="1080" alt="Screenshot (202)" src="https://github.com/user-attachments/assets/a803b647-972a-4ebc-88b2-e55f7bc3e3b8" />
+
+
+# 4 Station Page
+<img width="1920" height="1080" alt="Screenshot (203)" src="https://github.com/user-attachments/assets/94a3b324-62a7-4d36-93ed-f3c66eb4b0f3" />
+
+# 5 Station Details Pages
+
+<img width="1920" height="1080" alt="Screenshot (204)" src="https://github.com/user-attachments/assets/ec91e756-de2a-4066-9728-bcb87800c9dd" />
+<img width="1920" height="1080" alt="Screenshot (205)" src="https://github.com/user-attachments/assets/cd0bd258-1288-45b5-bbec-98c24faf766c" />
+
+
+#6 Stations list in Map
+<img width="1920" height="1080" alt="Screenshot (206)" src="https://github.com/user-attachments/assets/8226e764-d405-4da3-91db-2a8a8c2390df" />
+
 
 
 ## 🌐 Deployment
