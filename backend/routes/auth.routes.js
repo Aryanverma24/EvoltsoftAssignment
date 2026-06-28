@@ -1,6 +1,7 @@
 import express from "express"
 
-import { registerUser , loginUser} from "../controllers/auth.controller.js"
+import { registerUser , loginUser ,getMe} from "../controllers/auth.controller.js"
+import protect from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 /**
@@ -99,5 +100,55 @@ router.post("/register",registerUser);
  *         description: User not found
  */
 router.post("/login",loginUser);
+
+/**
+ * @swagger
+ * /auth/me:
+ *   get:
+ *     summary: Get current logged-in user profile
+ *     description: Returns the details of the currently authenticated user using JWT token.
+ *     tags:
+ *       - Authentication
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: User fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                       example: 6a3e7afc3b83bce32b2946d4
+ *                     name:
+ *                       type: string
+ *                       example: Aryan Verma
+ *                     email:
+ *                       type: string
+ *                       example: aryan@gmail.com
+ *                     
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                   example: Not authorized
+ */
+router.get("/me",protect,getMe);
 
 export default router;
