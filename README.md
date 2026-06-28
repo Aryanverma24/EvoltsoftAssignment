@@ -125,7 +125,7 @@ npm install
 npm run dev
 ```
 
-# Backend will start on:
+# Frontend will start on:
 
 ```bash
 http://localhost:5173
@@ -161,10 +161,11 @@ Create a new user account.
   "message": "User Registered Successfully",
   "token": "jwt_token"
 }
+```
+# Login User
 
-Login User
+**Method:** `POST`
 
-POST
 ```http
 /api/auth/login
 
@@ -183,8 +184,9 @@ Response
   "message": "Login successfully",
   "token": "jwt_token"
 }
+```
 
-⚡ Charging Station APIs
+## ⚡ Charging Station APIs
 
 All charging station routes are protected and require JWT token.
 
@@ -193,20 +195,24 @@ Add token in request header:
 Authorization: Bearer <JWT_TOKEN>
 
 Get All Charging Stations
-
-GET
-```http
-/api/stations
-
 Fetch all available charging stations.
 
-Create Charging Station
+**Method:** `GET`
 
-POST
 ```http
 /api/stations
 
+```
+
+# Create Charging Station
+
+**Method:** `POST`
+
 Create a new charging station.
+
+```http
+/api/stations
+
 
 Request Body
 
@@ -218,13 +224,16 @@ Request Body
   "powerOutput": 50,
   "connectorType": "CCS"
 }
-Update Charging Station
+```
+# # Update Charging Station
 
-PUT
+**Method:** `PUT`
+
+Update existing charging station details.
+
 ```http
 /api/stations/:id
 
-Update existing charging station details.
 
 Request Body
 
@@ -234,21 +243,25 @@ Request Body
   "powerOutput": 60,
   "connectorType": "Type-2"
 }
-Delete Charging Station
+```
 
-DELETE
-```http
-/api/stations/:id
+## Delete Charging Station
+
+**Method:** `DELETE`
 
 Delete a charging station using station ID.
 
-Authentication
+```http
+/api/stations/:id
+```
+
+## Authentication
 
 Protected APIs require JWT token:
 
 Authorization: Bearer your_jwt_token
 
-```
+
 ## 🌐 Deployment
 
 # Frontend
