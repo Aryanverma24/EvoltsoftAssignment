@@ -121,14 +121,18 @@ onMounted(()=>{
 
 
 <template> 
-   <div class="min-h-screen bg-blue-50 flex">
+   <div class="min-h-screen bg-blue-50 flex flex-col md:flex-row">
     
     <!-- SIDEBAR -->
        <div class="fixed left-0 top-0 h-screen w-64 z-50">
             <Sidebar/>
         </div>
     <!-- CONTENT -->
-    <div class="ml-64 h-screen overflow-y-auto w-full">
+
+      <div class="block md:hidden">
+      <TopNavbar />
+    </div>
+    <div class="md:ml-64 md:h-screen overflow-y-auto w-full">
         <div class="p-6 py-2">
             <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mt-8 mb-6">
                 <div>
@@ -151,7 +155,7 @@ onMounted(()=>{
                         :class="activeFilter==='Active'
                         ?'bg-green-600 text-white'
                         :'bg-white text-gray-700 hover:bg-green-100'"
-                        class="px-5 py-2 rounded-xl shadow border cursor-pointer ">
+                        class="px-5 py-1 md:py-2 rounded-xl shadow border cursor-pointer ">
                             Active
                     </button>
 
@@ -159,19 +163,19 @@ onMounted(()=>{
                         @click="setFilter('Inactive')"
                         :class="activeFilter==='Inactive'
                         ?'bg-orange-600 text-white' :'bg-white text-gray-700 hover:bg-red-100'"
-                        class="px-5 py-2 rounded-xl shadow border cursor-pointer ">
+                        class="px-5 py-1 md:py-2 rounded-xl shadow border cursor-pointer ">
                             Inactive
                     </button>
                     <button
                     @click="showFilters=true"
-                    class="bg-white border shadow px-5 py-3 rounded-xl cursor-pointer hover:bg-blue-50">
-                    ⚙ Filters
+                    class="bg-white border shadow px-5 py-1 md:py-3 rounded-xl cursor-pointer hover:bg-blue-50">
+                     Filters
                     </button>
                 </div>
             
                 </div>
 
-            <div class="flex gap-3 mt-8">
+            <div class="flex gap-3 mt-3 md:mt-8">
                 <input 
                     v-model="search"
                     @input="handleSearch"
@@ -180,7 +184,7 @@ onMounted(()=>{
                     />
                    <button
                         @click="showAddModal = true"
-                        class="bg-blue-600 text-white px-5 py-3 rounded-xl">
+                        class="bg-blue-600 text-white px-5 py-1 md:py-3 rounded-xl">
                             + Add Station
                     </button>
             </div>

@@ -48,13 +48,15 @@ onMounted(() => {
 <template>
   <div class="min-h-screen bg-blue-50 flex flex-col md:flex-row">
     <!-- Sidebar -->
-    <div class="hidden md:block fixed left-0 top-0 h-screen w-64">
+    <div class="block fixed left-0 top-0 h-screen w-64">
       <Sidebar />
     </div>
 
     <!-- Content -->
-    <div class="flex-1 p-4 sm:p-6 md:ml-64">
+    <div class="block md:hidden">
       <TopNavbar />
+    </div>
+    <div class="flex-1 p-4 md:ml-64">
       <h1 class="text-2xl sm:text-3xl font-bold mt-6 text-gray-800">
         EV Charging Dashboard
       </h1>

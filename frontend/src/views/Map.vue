@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import L from "leaflet";
 import api from "../api/axios";
 import Sidebar from "../components/dashboard/Sidebar.vue"
+import TopNavbar from "../components/dashboard/Topbar.vue"
 
 const stations = ref([]);
 
@@ -111,13 +112,17 @@ onMounted(() => {
 
 
 <template>
-    <div class="min-h-screen bg-blue-50 flex">
+    <div class="min-h-screen bg-blue-50 flex flex-col md:flex-row">
         <!-- sidebar -->
         <div class="fixed left-0 top-0 h-screen w-64 z-50">
             <Sidebar/>
         </div>
+
+        <div class="block md:hidden">
+            <TopNavbar />
+        </div>
         <!-- content -->
-        <div class="ml-64 h-screen overflow-y-auto w-full">
+        <div class="md:ml-64 md:h-screen overflow-y-auto w-full">
                <div class="p-6">
     <div class="mb-6">
       <h1 class="text-3xl font-bold text-gray-800">
@@ -131,7 +136,7 @@ onMounted(() => {
         
     <div
       id="map"
-      class="h-[400px] w-[1080px] rounded-3xl overflow-hidden shadow-xl border border-gray-200"
+      class="h-[600px] md:h-[400px] w-[1080px] rounded-3xl overflow-hidden shadow-xl border border-gray-200 z-40"
     ></div>
     </div>
   </div>

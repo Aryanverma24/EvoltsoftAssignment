@@ -4,6 +4,10 @@ import { useRoute, useRouter } from "vue-router";
 import StationMapPreview from "../components/map/StationMapPreview.vue";
 import api from "../api/axios";
 
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
+
 const route = useRoute();
 const router = useRouter();
 
@@ -58,7 +62,8 @@ const goBack = () => {
 };
 
 const openEdit = () => {
-  console.log("btn clicked");
+    
+    if(!station.value) return ;
 
   form.value = {
     name: station.value.name,
@@ -87,17 +92,21 @@ const updateStation = async () => {
       showModel.value = false;
       fetchStation();
     }
+    toast.success("Station Updated")
   } catch (err) {
     console.log(err);
+    toast.error(err.message)
   }
 };
 
 const deleteStation = async () => {
   try {
     const res = await api.delete(`/chargers/${station.value._id}`);
+    toast.success("Station Removed successfully")
     router.back();
   } catch (error) {
     console.log(error);
+    toast.error(error.message)
   }
 };
 
@@ -308,9 +317,9 @@ onMounted(() => {
 
         <div 
         @click="getDirection"
-        class="cursor-pointer">          
+        class="cursor-pointer z-20">          
             <!-- MAP -->
-          <div class="bg-white rounded-2xl shadow border border-blue-100 p-3">
+          <div class="bg-white rounded-2xl shadow border border-blue-100 p-3 ">
             <StationMapPreview
               :lat="station.location.lat"
               :long="station.location.long"
@@ -347,5 +356,78 @@ onMounted(() => {
         </button>
       </div>
     </div>
+
+    <!-- EDIT MODAL -->
+<div
+  v-if="showModel"
+  class="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999]"
+>
+  <div class="bg-white w-full max-w-lg rounded-2xl p-6 shadow-xl z-[10000]">
+
+    <h2 class="text-xl font-bold mb-4">✏️ Edit Station</h2>
+
+    <div class="space-y-3">
+
+      <input
+        v-model="form.name"
+        class="w-full border p-2 rounded-lg"
+        placeholder="Station Name"
+      />
+
+      <input
+        v-model="form.status"
+        class="w-full border p-2 rounded-lg"
+        placeholder="Status"
+      />
+
+      <input
+        v-model="form.powerOutput"
+        type="number"
+        class="w-full border p-2 rounded-lg"
+        placeholder="Power Output"
+      />
+
+      <input
+        v-model="form.connectorType"
+        class="w-full border p-2 rounded-lg"
+        placeholder="Connector Type"
+      />
+
+      <div class="grid grid-cols-2 gap-2">
+        <input
+          v-model="form.lat"
+          class="w-full border p-2 rounded-lg"
+          placeholder="Latitude"
+        />
+
+        <input
+          v-model="form.long"
+          class="w-full border p-2 rounded-lg"
+          placeholder="Longitude"
+        />
+      </div>
+
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="flex justify-end gap-3 mt-5">
+
+      <button
+        @click="showModel = false"
+        class="px-4 py-2 border rounded-lg"
+      >
+        Cancel
+      </button>
+
+      <button
+        @click="updateStation"
+        class="px-4 py-2 bg-blue-600 text-white rounded-lg"
+      >
+        Save
+      </button>
+
+    </div>
+  </div>
+</div>
   </div>
 </template>
