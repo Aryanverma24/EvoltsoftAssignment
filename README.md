@@ -221,7 +221,7 @@ Fetch all available charging stations.
 **Method:** `GET`
 
 ```http
-/api/stations
+/api/chargers
 
 ```
 
@@ -232,7 +232,7 @@ Fetch all available charging stations.
 Create a new charging station.
 
 ```http
-/api/stations
+/api/chargers
 ```
 
 Request Body
@@ -253,7 +253,7 @@ Request Body
 Update existing charging station details.
 
 ```http
-/api/stations/:id
+/api/chargers/:id
 ```
 
 Request Body
@@ -273,7 +273,7 @@ Request Body
 Delete a charging station using station ID.
 
 ```http
-/api/stations/:id
+/api/chargers/:id
 ```
 
 ## Authentication
