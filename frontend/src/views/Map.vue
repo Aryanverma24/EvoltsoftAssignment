@@ -114,7 +114,7 @@ onMounted(() => {
 <template>
     <div class="min-h-screen bg-blue-50 flex flex-col md:flex-row">
         <!-- sidebar -->
-        <div class="fixed left-0 top-0 h-screen w-64 z-50">
+        <div class="fixed left-0 top-0 h-screen w-64 z-50 hidden md:block">
             <Sidebar/>
         </div>
 

@@ -265,13 +265,13 @@ Authorization: Bearer your_jwt_token
 ## 🌐 Deployment
 
 # Frontend
-
-Coming Soon
-
+```bash
+https://evoltsoft-assignment-xi.vercel.app
+```
 # Backend API
-
-Coming Soon
-
+```bash
+https://evoltsoftassignment.onrender.com
+```
 # 🔐 Environment Variables
 
 # Backend 
