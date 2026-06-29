@@ -25,8 +25,12 @@ const registerUser = asyncHandler(async(req,res) => {
         email,
         password:hashedPassword
     })
+
+    const token = generateToken(user._id);
+
     res.status(201).json({
         message: "User register successfully" , 
+        token,
         user : {
             id: user._id,
             name: user.name,
