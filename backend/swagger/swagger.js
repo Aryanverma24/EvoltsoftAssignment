@@ -20,7 +20,7 @@ const options = {
                 description: "Local Server"
             },
             {
-                url: "https://evoltsoftassignment.onrender.com",
+                url: "https://evoltsoftassignment.onrender.com/api",
                 description: "Production Server"
             }
         ],
