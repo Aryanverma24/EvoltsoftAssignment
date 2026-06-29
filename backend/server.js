@@ -27,6 +27,13 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/auth",authRoutes)
 app.use("/api/chargers",chargerRoutes)
 
+app.get("/health", (req,res)=>{
+  res.status(200).json({
+    status:"Server is running",
+    time:new Date()
+  })
+});
+
 app.use(errorHandler);
 
 app.listen(PORT,() => {

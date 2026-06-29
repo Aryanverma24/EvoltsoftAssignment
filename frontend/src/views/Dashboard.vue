@@ -2,6 +2,10 @@
 import { ref, onMounted } from "vue";
 import api from "../api/axios.js";
 
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
 import Sidebar from "../components/dashboard/Sidebar.vue";
 import TopNavbar from "../components/dashboard/Topbar.vue";
 
@@ -38,6 +42,10 @@ const inactiveCount = () => {
 
 const totalPower = () => {
   return stations.value.reduce((total, item) => total + item.powerOutput, 0);
+};
+
+const goToMap = () => {
+  router.push("/map");
 };
 
 onMounted(() => {
@@ -135,11 +143,8 @@ onMounted(() => {
         >
           + Add Station
         </button>
-        <button class="bg-white shadow p-5 rounded-2xl">
-            📍 View Map
-        </button>
-        <button class="bg-white shadow p-5 rounded-2xl">
-            🔋 Sessions
+        <button @click="goToMap" class="bg-white shadow p-5 rounded-2xl">
+          📍 View Map
         </button>
       </div>
     </div>
